@@ -1,12 +1,16 @@
 #include <QTranslator>
-#include <QCoreApplication>
+#include <QApplication>
 #include <QDebug>
+#include <QFileDialog>
 
 int main(int argc, char* argv[])
 {
-  QCoreApplication app(argc, argv);
+  QApplication app(argc, argv);
   const auto locale = QLocale::system();
   QTranslator translator;
+  QFileDialog::getSaveFileName(nullptr, "foo", "bar");
+  return app.exec();
+
   if (argc == 1) {
     if (translator.load(locale, "qtbase", "_")) {
       qDebug() << "Successfully loaded qtbase translator for " << locale;
