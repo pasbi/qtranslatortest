@@ -8,7 +8,9 @@ int main(int argc, char* argv[])
   QApplication app(argc, argv);
   const auto locale = QLocale::system();
   QTranslator translator;
-  QFileDialog::getSaveFileName(nullptr, "foo", "bar");
+  QFileDialog d;
+  d.setOption(QFileDialog::DontUseNativeDialog, true);
+  d.exec();
   return app.exec();
 
   if (argc == 1) {
